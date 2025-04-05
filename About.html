@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Our Company</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f5f0;
+            background-image: radial-gradient(#e8d8c0 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* Hero Section */
+        #hero {
+            background: linear-gradient(rgba(23, 24, 26, 0.7), rgba(148, 188, 247, 0.7)), 
+                        url(https://images.pexels.com/photos/205961/pexels-photo-205961.jpeg) center/cover no-repeat fixed;
+            min-height: 100vh;
+            width: 100%;
+            padding: 80px 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+
+        .hero-logo img {
+            max-width: 300px;
+            height: auto;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .hero-logo img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Team Section */
+        #team {
+            padding: 80px 0;
+            background-color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #team::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to bottom, #f9f5f0, transparent);
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #5d4037;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: #d4a373;
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+
+        .section-description {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            text-align: center;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .member {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            padding: 20px;
+            text-align: center;
+            max-width: 350px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .member::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px dashed #d4a373;
+            border-radius: 20px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .member:hover::before {
+            opacity: 0.6;
+        }
+
+        .pic {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid #f8edeb;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .member:hover .pic img {
+            transform: scale(1.05);
+        }
+
+        .member h4 {
+            font-size: 1.4rem;
+            color: #5d4037;
+            margin-bottom: 5px;
+        }
+
+        .member span {
+            display: block;
+            font-size: 1rem;
+            color: #d4a373;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .member p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f8edeb;
+            color: #5d4037;
+            transition: all 0.3s;
+        }
+
+        .social a:hover {
+            background: #d4a373;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* About Section */
+        #about {
+            padding: 80px 0;
+            background-color: #f8edeb;
+            position: relative;
+        }
+
+        #about::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, #f9f5f0, transparent);
+            z-index: 1;
+        }
+
+        .about-container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-content {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .about-title {
+            font-size: 1.8rem;
+            color: #5d4037;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .about-title::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #d4a373;
+            margin-top: 10px;
+        }
+
+        .about-text {
+            color: #555;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        /* Social Links Section */
+        .social-section {
+            padding: 60px 0;
+            text-align: center;
+            background-color: white;
+        }
+
+        .social-section h2 {
+            font-size: 2rem;
+            color: #5d4037;
+            margin-bottom: 30px;
+        }
+
+        .social-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-links li {
+            margin: 0;
+        }
+
+        .social-links a {
+            display: block;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .social-links img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #5d4037;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .wow.fadeIn {
+            animation: fadeIn 1s both;
+        }
+
+        .wow.fadeInUp {
+            animation: fadeIn 1s both;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-logo img {
+                max-width: 200px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .member {
+                max-width: 100%;
+            }
+            
+            .social-links a {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section id="hero">
+        <div class="hero-container wow fadeIn">
+            <div class="hero-logo">
+                <img src="aima's_delight.jpg" alt="Aima's Delight Pastries">
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Members Section -->
+    <section id="team">
+        <div class="container wow fadeInUp">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="section-title">Our Team</h1>
+                    <h2 class="section-description">Meet the faces behind the Creative Masterpieces</h2>
+                    <p class="section-description">From the creative artists, to the bakers and chefs and then the marketing 
+                        team, we are proud to call ourselves the outstanding faces behind Aima's 
+                        Delicious Pastries.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <div class="member">
+                        <div class="pic"><img src="Emmanuella.jpg" alt="Emmanuella A. Ileogben" class="img-fluid"></div>
+                        <h4>Emmanuella A. Ileogben</h4>
+                        <span>Chief Executive Officer</span>
+                        <p>The CEO defines the bakery's long-term vision and mission, including its brand identity, market positioning, and growth objectives.
+                           She also ensures the efficient and effective operation of all aspects of the bakery, from production and quality control to sales and 
+                           customer service. She oversees the procurement of ingredients and supplies, ensuring a reliable supply chain. She sets the company's culture 
+                           and has a deep understanding of the bakery industry, including trends, techniques, and ingredients.
+                        </p>
+                        <div class="social">
+                            <a href="https://www.instagram.com/b_aimalohi/?igsh=MWJxbHV3bHB6aTZsZw%3D%3D" target="_blank" rel="noopener noreferrer" title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.facebook.com/emmanuella.ileogben.71" target="_blank" rel="noopener noreferrer" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="mailto:emmanuellaileogben@gmail.com" title="Email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/emmanuella-ileogben-13b024213/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="col-md-3 mb-4">
+                    <div class="member">
+                        <div class="pic"><img src="Aide_Leo.jpg" alt="Emmanuel Aidelokhai Ileogben" class="img-fluid"></div>
+                        <h4>Emmanuel Aidelokhai Ileogben</h4>
+                        <span>Sales Manager</span>
+                        <p>Our Sales Manager develops and implements sales strategies to increase revenue and market share. 
+                            He builds and maintains relationships with customers, suppliers, and partners. He also analyzes 
+                            sales data and market trends to identify opportunities for growth and improvement.</p>
+                        <div class="social">
+                            <a href="https://www.twitter.com/_leothegreat_" target="_blank" rel="noopener noreferrer" title="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>  
+                            <a href="mailto:aidelokhaiileogben@gmail.com" title="Email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="https://www.instagram.com/leothegr8._" target="_blank" rel="noopener noreferrer" title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/emmanuelaidelokhaiileogben" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="col-md-3 mb-4">
+                    <div class="member">
+                        <div class="pic"><img src="Divine.jpg" alt="Divine Ekeze Favour" class="img-fluid"></div>
+                        <h4>Divine Ekeze Favour</h4>
+                        <span>Head Decorative Artist</span>
+                        <p>Our Head Decorative Artist designs and creates visually stunning decorations for cakes and pastries. 
+                            She stays updated with the latest trends in cake decoration and pastry arts. She also trains and 
+                            supervises junior decorators to maintain high-quality standards. Her artistic vision enhances the 
+                            aesthetic appeal of all our products.</p>
+                        <div class="social">
+                            <a href="https://www.twitter.com/deeTechGurl" target="_blank" rel="noopener noreferrer" title="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>  
+                            <a href="mailto:ekezedivinefavour@gmail.com" title="Email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="https://www.instagram.com/di_vinne" target="_blank" rel="noopener noreferrer" title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/ekezedivinefavour" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="member">
+                        <div class="pic"><img src="Dammey.jpeg" alt="Divine Ekeze Favour" class="img-fluid"></div>
+                        <h4>Emmanuel Damilola Adejube</h4>
+                        <span>Head Baker</span>
+                        <p>The Head Baker oversees the daily production of baked goods, ensuring consistency and quality. 
+                           He develops and tests new recipes to expand the bakery's offerings. He manages the baking team, 
+                           providing training and guidance to maintain high standards. He ensures compliance with health 
+                           and safety regulations in the kitchen. Additionally, he monitors inventory levels and coordinates 
+                           with suppliers to ensure timely procurement of ingredients.</p>
+                        <div class="social">
+                            <a href="https://www.facebook.com/dammeyd" target="_blank" rel="noopener noreferrer" title="Twitter">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>  
+                            <a href="mailto:dammeyd@gmail.com" title="Email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="https://www.instagram.com/vee_cee_dammey" target="_blank" rel="noopener noreferrer" title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container wow fadeInUp">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="section-title">Our Services</h2>
+                    <p class="section-description">We offer all-round fun and entertainment; Our pastries aren't just baked, they are crafted. 
+                        Using premium butter, organic flour, and European techniques, we turn desserts into edible art. Our menu has a wide range 
+                        of freshly baked pastries, made from time-tested recipes with a bite and a warm hug of nostalgia to cater all ages.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container about-container wow fadeInUp">
+            <div class="row">
+                <div class="col-md-8 mx-auto about-content">
+                    <h2 class="about-title">We pair our baked treats with freshly squeezed juices and milkshakes</h2>
+                    <p class="about-text">
+                        Unwind and savor the moment when you have a bite at Aima's Delight Pastries. Our carefully curated selection of flavor, 
+                        and decadent treats provides the perfect setting for a relaxing evening or afternoon.
+                        Enjoy our cozy atmosphere, light music, and friendly service while at our store.
+                    </p>
+                    <p class="about-text">
+                        Experience the vibrant flavors being served at our store, Aima's Delight Pastries. For every occasion, every craving, we bake happiness. 
+                        Indulge your senses into our dreamy desserts and our freshly baked delights, life's too short for boring desserts and fillings; taste the extraordinary.
+                        Our stylish and energetic atmosphere makes us the perfect spot for a day out with friends and family. Discover your new favorite pastry shop to have a blast.
+                    </p>
+                    <p class="about-text">
+                        Celebrate every moment with one of our special flavored cakes and treats with your guests, family and friends. The staff are also welcoming and friendly, they cater
+                        to your needs as soon as you step into the store/shop or you place an order. Find the perfect destination for lunch with friends, conference meetings, a date with our partners/
+                        spouses. The ambiance is warm and inviting. The menu is fresh and hot, ready to be devoured as soon as your orders are placed. 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="social-section">
+        <div class="container wow fadeIn">
+            <h2>Connect With Us:</h2>
+            <ul class="social-links">
+                <li><a href="https://www.instagram.com/b_aimalohi/" target="_blank"><img src="Instagram_logo.jpg" alt="Instagram"></a></li>
+                <li><a href="https://www.facebook.com/emmanuella-ileogben-13b024213/" target="_blank"><img src="Facebook_logo.jpg" alt="Facebook"></a></li>
+                <li><a href="https://www.tiktok.com/@b_aimalohi/" target="_blank"><img src="TikTok_logo.jpg" alt="TikTok"></a></li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        &copy; Copyright Aima's Delight Pastries. 2025. All Rights Reserved.
+    </footer>
+
+    <script>
+        // Simple animation trigger
+        document.addEventListener('DOMContentLoaded', function() {
+            const wowElements = document.querySelectorAll('.wow');
+            
+            const animateOnScroll = function() {
+                wowElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        element.style.opacity = 1;
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // Run once on load
+        });
+    </script>
+</body>
+</html>

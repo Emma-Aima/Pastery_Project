@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aima's Delight Pastries</title>
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+        <style>
+            /* Base Styles */
+            :root {
+                --primary-color: #960b0b;
+                --secondary-color: #f84e92;
+                --light-color: #FFEDF5;
+                --dark-color: #5C3A21;
+                --accent-color: #3498db;
+                --text-color: #333;
+                --white: #ffffff;
+                --bg-color: #b8e6f7;
+            }
+            
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            
+            body {
+                font-family: 'Raleway', sans-serif;
+                background: var(--bg-color);
+                color: var(--text-color);
+                line-height: 1.6;
+                text-align: center;
+            }
+            
+            h1, h2, h3 {
+                font-family: 'Playfair Display', serif;
+                color: var(--primary-color);
+                font-weight: 700;
+                margin-bottom: 1rem;
+                text-align: center;
+            }
+            
+            p {
+                color: var(--text-color);
+                font-family: 'Raleway', sans-serif;
+                font-size: 1.1rem;
+                margin-bottom: 1.5rem;
+                text-align: center;
+                max-width: 800px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            a {
+                text-decoration: none;
+                color: var(--primary-color);
+                transition: all 0.3s ease;
+            }
+            
+            a:hover {
+                color: var(--secondary-color);
+            }
+            
+            img {
+                max-width: 100%;
+                height: auto;
+                display: block;
+                margin: 0 auto;
+            }
+            
+            .container {
+                width: 100%;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+            
+            /* Header Styles */
+            header {
+                background-color: var(--white);
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                position: sticky;
+                top: 0;
+                z-index: 100;
+                padding: 1rem 0;
+            }
+            
+            #branding {
+                margin-bottom: 1rem;
+            }
+            
+            #branding h1 {
+                font-size: 2rem;
+                margin: 0;
+            }
+            
+            #branding .highlight {
+                color: var(--secondary-color);
+            }
+            
+            nav ul {
+                display: flex;
+                justify-content: center;
+                list-style: none;
+                padding: 0;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 0 1rem;
+            }
+            
+            nav ul li a {
+                font-weight: 600;
+                font-size: 1.1rem;
+                padding: 0.5rem 0;
+                position: relative;
+            }
+            
+            nav ul li a:after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 2px;
+                background: var(--secondary-color);
+                bottom: 0;
+                left: 0;
+                transition: width 0.3s ease;
+            }
+            
+            nav ul li a:hover:after,
+            nav ul li.current a:after {
+                width: 100%;
+            }
+            
+            /* Hero Section */
+            #hero {
+                background-size: cover;
+                background-position: center;
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                padding: 2rem;
+                position: relative;
+                background-color: rgba(184, 230, 247, 0.8);
+                background-blend-mode: overlay;
+            }
+            
+            .hero-container {
+                max-width: 800px;
+            }
+            
+            .hero-logo {
+                margin-bottom: 2rem;
+            }
+            
+            .hero-logo img {
+                max-height: 150px;
+                width: auto;
+            }
+            
+            #hero h1 {
+                font-size: 3rem;
+                margin-bottom: 1.5rem;
+                color: var(--primary-color);
+            }
+            
+            #hero h2 {
+                font-size: 1.5rem;
+                margin-bottom: 2rem;
+                color: var(--dark-color);
+            }
+            
+            .rotating {
+                color: var(--secondary-color);
+                font-weight: 600;
+            }
+            
+            .actions {
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+            
+            .btn-get-started,
+            .btn-services {
+                padding: 0.8rem 2rem;
+                border-radius: 50px;
+                font-weight: 600;
+                transition: all 0.3s ease;
+            }
+            
+            .btn-get-started {
+                background-color: var(--secondary-color);
+                color: var(--white);
+                border: 2px solid var(--secondary-color);
+            }
+            
+            .btn-services {
+                background-color: transparent;
+                color: var(--primary-color);
+                border: 2px solid var(--primary-color);
+            }
+            
+            .btn-get-started:hover {
+                background-color: var(--primary-color);
+                border-color: var(--primary-color);
+            }
+            
+            .btn-services:hover {
+                background-color: var(--primary-color);
+                color: var(--white);
+            }
+            
+            /* Showcase Section */
+            #showcase {
+                padding: 4rem 0;
+                background-color: var(--white);
+            }
+            
+            #showcase h1 {
+                font-size: 2.5rem;
+                margin-bottom: 2rem;
+            }
+            
+            /* Boxes Section */
+            #boxes {
+                padding: 4rem 0;
+                background-color: var(--bg-color);
+            }
+            
+            #boxes .container {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2rem;
+            }
+            
+            .box {
+                background: var(--white);
+                padding: 2rem;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                transition: transform 0.3s ease;
+            }
+            
+            .box:hover {
+                transform: translateY(-10px);
+            }
+            
+            .box img {
+                border-radius: 8px;
+                margin-bottom: 1rem;
+                height: 200px;
+                object-fit: cover;
+                width: 100%;
+            }
+            
+            .box h3 {
+                font-size: 1.5rem;
+                margin: 1rem 0;
+            }
+            
+            /* Newsletter Section */
+            #newsletter {
+                background-color: var(--light-color);
+                padding: 4rem 0;
+            }
+            
+            #newsletter h1 {
+                color: var(--secondary-color);
+                font-size: 2.2rem;
+                margin-bottom: 2rem;
+            }
+            
+            .form-box {
+                max-width: 600px;
+                margin: 0 auto;
+                background-color: var(--white);
+                padding: 2rem;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+            
+            .form-group {
+                margin-bottom: 1.5rem;
+                text-align: left;
+            }
+            
+            .form-group label {
+                display: block;
+                margin-bottom: 0.5rem;
+                font-weight: 600;
+                color: var(--dark-color);
+            }
+            
+            .form-input {
+                width: 100%;
+                padding: 1rem;
+                font-size: 1rem;
+                border: 1px solid #fcb2c4;
+                border-radius: 5px;
+                transition: all 0.3s ease;
+                font-family: 'Raleway', sans-serif;
+            }
+            
+            .form-input:focus {
+                border-color: var(--accent-color);
+                outline: none;
+                box-shadow: 0 0 0 2px rgba(63, 60, 210, 0.2);
+            }
+            
+            .button_1 {
+                background-color: var(--secondary-color);
+                color: var(--white);
+                border: none;
+                padding: 1rem 2rem;
+                font-size: 1rem;
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: 600;
+                transition: all 0.3s ease;
+                width: 100%;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+            
+            .button_1:hover {
+                background-color: var(--primary-color);
+                transform: translateY(-2px);
+            }
+            
+            /* Social Links */
+            .social-section {
+                padding: 3rem 0;
+                background-color: var(--white);
+            }
+            
+            .social-section h2 {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+            
+            .social-links {
+                display: flex;
+                justify-content: center;
+                list-style: none;
+                gap: 2rem;
+                flex-wrap: wrap;
+            }
+            
+            .social-links li a {
+                display: block;
+                transition: transform 0.3s ease;
+            }
+            
+            .social-links li a:hover {
+                transform: scale(1.1);
+            }
+            
+            .social-links img {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                object-fit: cover;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+            
+            /* Footer */
+            footer {
+                background-color: var(--dark-color);
+                color: var(--white);
+                padding: 2rem 0;
+                text-align: center;
+            }
+            
+            footer p {
+                color: var(--white);
+                margin-bottom: 0;
+            }
+            
+            /* Responsive Adjustments */
+            @media (max-width: 768px) {
+                #hero h1 {
+                    font-size: 2.5rem;
+                }
+                
+                #hero h2 {
+                    font-size: 1.2rem;
+                }
+                
+                nav ul {
+                    flex-direction: column;
+                    align-items: center;
+                }
+                
+                nav ul li {
+                    margin: 0.5rem 0;
+                }
+                
+                .box {
+                    padding: 1.5rem;
+                }
+            }
+            
+            @media (max-width: 480px) {
+                #hero h1 {
+                    font-size: 2rem;
+                }
+                
+                .hero-logo img {
+                    max-height: 100px;
+                }
+                
+                .actions {
+                    flex-direction: column;
+                    gap: 1rem;
+                }
+                
+                .btn-get-started,
+                .btn-services {
+                    width: 100%;
+                }
+                
+                .social-links img {
+                    width: 60px;
+                    height: 60px;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <div class="container">
+                <div id="branding">
+                    <h1><span class="highlight">Aima's</span> Delight Pastries</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li class="current"><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="products.html">Menu</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section id="hero">
+            <div class="hero-container">
+              <div class="hero-logo">
+                <img src="aima's_delight.jpg" alt="Aima's Delight Pastries">
+              </div>
+        
+              <h1>Welcome to Aima's Delight Pastries</h1>
+              <h2>We offer <span class="rotating">elegant cakes & cupcakes, sweetened donuts, tasty breads and flavorful pastries</span></h2>
+              <div class="actions">
+                <a href="about.html" class="btn-get-started">Exotic Treats</a>
+                <a href="products.html" class="btn-services">Our Services</a>
+              </div>
+            </div>
+        </section>
+
+        <section id="showcase">
+            <div class="container">
+                <h1>Delicious Pastries</h1>
+                <p>Try our delicious pastries and you will never regret it. You will always come back for more and introduce your friends and family to us.</p>
+            </div>
+        </section>
+
+        <section id="boxes">
+            <div class="container">
+                <div class="box">
+                    <img src="https://images.pexels.com/photos/1120464/pexels-photo-1120464.jpeg" alt="Cupcakes">
+                    <img src="https://images.pexels.com/photos/635409/pexels-photo-635409.jpeg" alt="More Cupcakes">
+                    <h3>Cupcakes</h3>
+                    <p>Try our delicious cupcakes and you will never regret it.</p>
+                </div>
+                
+                <div class="box">
+                    <img src="https://images.pexels.com/photos/2955820/pexels-photo-2955820.jpeg" alt="Donuts">
+                    <img src="https://images.pexels.com/photos/4686960/pexels-photo-4686960.jpeg" alt="More Donuts">
+                    <h3>Donuts</h3>
+                    <p>Come and enjoy our exquisite donuts which will leave you wanting more</p>
+                </div>
+                
+                <div class="box">
+                    <img src="https://images.pexels.com/photos/461060/pexels-photo-461060.jpeg" alt="Bread">
+                    <img src="https://images.pexels.com/photos/10488694/pexels-photo-10488694.jpeg" alt="More Bread">
+                    <h3>Bread</h3>
+                    <p>We have the best bread in town, with different flavours and fillings. Come and try it out.</p>
+                </div>
+                
+                <div class="box">
+                    <img src="https://i.pinimg.com/originals/58/45/00/58450016cc971cf04eb94f83e9df06d8.jpg" alt="Small Chops">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb22QYsxK2YpUZ1Lb0exyXArM_c5h7eoztsw&s" alt="More Small Chops">
+                    <h3>Small chops</h3>
+                    <p>Enjoy our African small chops on the go, at lunch or even as dessert with ice-cream. The taste will explode in your mouth with different flavors.</p>
+                </div>
+                
+                <div class="box">
+                    <img src="https://images.pexels.com/photos/4262133/pexels-photo-4262133.jpeg" alt="Cookies">
+                    <img src="https://images.pexels.com/photos/1546890/pexels-photo-1546890.jpeg" alt="More Cookies">
+                    <h3>Cookies</h3>
+                    <p>Come have a blast of our tasty and delightful cookies with different fillings, that can be eaten with milk, tea, coffee, milkshakes or even fruit juice.</p>
+                </div>
+                
+                <div class="box">
+                    <img src="https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg" alt="Cakes">
+                    <img src="https://images.pexels.com/photos/863006/pexels-photo-863006.jpeg" alt="More Cakes">
+                    <h3>Cakes</h3>
+                    <p>Taste our delicious cakes and order for birthdays, weddings, baby showers, bridal showers, casual events, etc.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="newsletter">
+            <div class="container">
+                <h1>Subscribe To Our Newsletter</h1>
+                <div class="form-box">
+                    <form id="newsletter-form">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" placeholder="Enter Full Name..." class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Mobile Number</label>
+                            <input type="tel" id="phone" placeholder="Enter Mobile Number..." class="form-input">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="Enter Email..." class="form-input" required>
+                        </div>
+                        <button type="submit" class="button_1">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="social-section">
+            <div class="container">
+                <h2>Connect with Our Page:</h2>
+                <ul class="social-links">
+                    <li><a href="https://www.instagram.com/your_instagram_handle/" target="_blank" aria-label="Instagram"><img src="Instagram_logo.jpg" alt="Instagram"></a></li>
+                    <li><a href="https://www.facebook.com/your_facebook_page/" target="_blank" aria-label="Facebook"><img src="Facebook_logo.jpg" alt="Facebook"></a></li>
+                    <li><a href="https://www.tiktok.com/@your_tiktok_handle/" target="_blank" aria-label="TikTok"><img src="TikTok_logo.jpg" alt="TikTok"></a></li>
+                </ul>
+            </div>
+        </section>
+        
+        <footer>
+            <div class="container">
+                <p>&copy; Copyright. Aima's Delight Pastries. 2025. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </body>
+</html>

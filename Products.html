@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Aima's Delight Pastries</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #050b46;
+            color: #4d2306;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #f7cad4;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(110, 216, 248, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #f8136f;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #5C3A21;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #D23C77;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1608190003443-86ab6b8275e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        /* Products Section */
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: #D23C77;
+        }
+        
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .product-card {
+            background-color: rgb(193, 235, 252);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(87, 2, 2, 0.377);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-img {
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-img img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            margin-bottom: 10px;
+            color: #D23C77;
+        }
+        
+        .product-info p {
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .price {
+            font-weight: bold;
+            color: #5C3A21;
+            font-size: 18px;
+        }
+        
+        /* Services Section */
+        .services {
+            background-color: #FFD1DC;
+            padding: 60px 0;
+            margin-bottom: 60px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .service-icon {
+            font-size: 40px;
+            color: #D23C77;
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 15px;
+            color: #5C3A21;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #5C3A21;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #FFD1DC;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            background-color: #D23C77;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: #FFD1DC;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 3px solid rgba(129, 6, 6, 0.863);
+        }
+        
+        /* Mobile  Navigation*/
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header-content .logo {
+                margin-bottom: 10px;
+            }
+
+            nav ul li a {
+                font-size: 18px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 0;
+                margin: 0;
+                list-style: none;
+            }
+            
+            nav ul li {
+                margin-left: 0;
+                margin-bottom: 10px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+        }
+        /* Button */
+        .btn {
+            display: inline-block;
+            background-color: #D23C77;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #B8326B;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">Aima's Delight Pastries</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Welcome to Aima's Delight Pastries</h1>
+            <p>Where every bite is a moment of pure bliss! Discover our range of delicious pastries, cakes, and treats.</p>
+            <p>Handcrafted with love using the finest ingredients for that perfect taste you'll crave again and again</p>
+        </div>
+    </section>
+    
+    <section class="container">
+        <h2 class="section-title">Our Signature Pastries</h2>
+        <div class="products">
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://images.pexels.com/photos/2135/food-france-morning-breakfast.jpg?auto=compress&cs=tinysrgb&w=600" alt="Croissants">
+                    <img src="https://images.pexels.com/photos/2245293/pexels-photo-2245293.jpeg?auto=compress&cs=tinysrgb&w=600">
+                </div>
+                <div class="product-info">
+                    <h3>Buttery Croissants</h3>
+                    <p>Our flaky, golden croissants are made with pure French butter and baked fresh every morning. Good to go with smoothies, 
+                        teas, or coffee.</p>
+                    </p>
+                    <p class="price">2,000 naira each</p>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Chocolate Cake">
+                </div>
+                <div class="product-info">
+                    <h3>Chocolate Decadence Cake</h3>
+                    <p>Indulge in the ultimate chocolate experience with our Chocolate Decadence Cake. Rich layers of moist chocolate sponge, velvety ganache, 
+                        and creamy buttercream come together in perfect harmony, topped with delicate chocolate shavings for a luxurious finish. A true masterpiece 
+                        for chocolate lovers!</p>
+                    <p class="price">28,000 naira for (6-inch)</p>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://media.istockphoto.com/id/525303133/photo/macaroons-on-wooden-table.jpg?b=1&s=612x612&w=0&k=20&c=i2QLmz8sMy5Ju5HUSGiBGR56pzInRIbdadz0X4JKOtc=" alt="Macarons">
+                </div>
+                <div class="product-info">
+                    <h3>French Macarons</h3>
+                    <p>Experience the elegance of French patisserie with our handcrafted macarons. These delicate almond meringue cookies, filled with a variety 
+                        of luscious flavors, are perfect for any occasion or as a luxurious treat for yourself. Available in an array of vibrant colors to brighten 
+                        your day.</p>
+                    <p class="price">1,500 each or 36,000 naira/pack of 24</p>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://images.pexels.com/photos/5328976/pexels-photo-5328976.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Vanilla Cakes">
+                </div>
+                <div class="product-info">
+                    <h3>Vanilla Cakes</h3>
+                    <p>Indulge in the timeless elegance of our Vanilla Cakes, crafted with the finest ingredients for a moist, fluffy texture and 
+                        a rich, aromatic vanilla flavor that melts in your mouth. Perfect for any occasion or as a delightful treat to brighten your 
+                        day.</p>
+                    <p class="price">30,000 naira each</p>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://media.istockphoto.com/id/465529983/photo/field-of-different-types-of-donuts.jpg?b=1&s=612x612&w=0&k=20&c=vuWGbVhYFQOYahWhJUAzYVJBgDrJDg-njrAxbAmUD1s=" alt="Doughnuts">
+                </div>
+                <div class="product-info">
+                    <h3>Doughnuts</h3>
+                    <p>Our doughnuts are a delightful treat, crafted to perfection with a soft, fluffy texture and a golden glaze that melts in your 
+                        mouth. Each bite is a burst of sweetness, making them the perfect indulgence for any time of the day.</p>
+                    <p class="price">2,000 naira each, 11,000 naira/box of six</p>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://media.istockphoto.com/id/1207748377/photo/fresh-homemade-cinnamon-rolls-or-cinnamon-buns.jpg?b=1&s=612x612&w=0&k=20&c=qthXzgf-V0yTniIExpP1Jz8a-h1wbM3evBq2mO93N8o=" alt="Cinnamon Rolls">
+                </div>
+                <div class="product-info">
+                    <h3>Cinnamon Rolls</h3>
+                    <p>Experience the ultimate comfort treat with our Cinnamon Rolls! Soft, fluffy rolls swirled with a perfect blend of cinnamon 
+                        and sugar, topped with a rich, creamy cheese frosting that melts in your mouth. Perfect for breakfast, dessert, or anytime 
+                        indulgence!</p>
+                    <p class="price">3,000 naira each or 18,000 naira/half dozen</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://media.istockphoto.com/id/485832764/photo/red-velvet-cake.jpg?b=1&s=612x612&w=0&k=20&c=t0YsONQT3gtqcBEUehnlAs8fmYLx2ISqlnMKlXys7ZY=" alt="Red Velvet Cake">
+                </div>
+                <div class="product-info">
+                    <h3>Red Velvet Cake</h3>
+                    <p>Our Red Velvet Cake is a showstopper! With its vibrant red color and velvety texture, this classic cake is layered with rich cream cheese frosting, 
+                        creating a perfect balance of sweetness and tanginess. Ideal for celebrations or as a delightful treat to illuminate your day.</p>
+                    <p class="price">30,000 naira each</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://images.pexels.com/photos/3186743/pexels-photo-3186743.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Chocolate Chip Cookies">
+                </div>
+                <div class="product-info">
+                    <h3>Chocolate Chip Cookies</h3>
+                    <p>Our Chocolate Chip Cookies are a classic favorite! Soft, chewy, and loaded with rich chocolate chips, these cookies are perfect for any occasion. 
+                        Enjoy them warm with a glass of milk or as a sweet treat anytime!</p>
+                    <p class="price">1,000 naira each or 6,000 naira/box of six</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://images.pexels.com/photos/6463660/pexels-photo-6463660.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Milkshakes">
+                </div>
+                <div class="product-info">
+                    <h3>Milkshakes</h3>
+                    <p>Our Milkshakes are a creamy, dreamy delight! Made with premium ice cream and fresh ingredients, each sip is a burst of flavor that will leave you craving 
+                        more. Choose from classic favorites like chocolate, vanilla, and strawberry, or try our signature creations for a unique twist. Perfect for cooling off on 
+                        a hot day or as a sweet treat anytime!</p>
+                    <p class="price">4,500 naira each</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://images.pexels.com/photos/461060/pexels-photo-461060.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Fruit Tarts">
+                </div>
+                <div class="product-info">
+                    <h3>Bread</h3>
+                    <p>Our Artisan Breads are baked to perfection! With a golden crust and soft, airy interior, each loaf is crafted using traditional techniques 
+                        and the finest ingredients. Perfect for sandwiches, toasts, or simply enjoyed on its own, our bread is a wholesome delight 
+                        for every meal.</p>
+                    <p class="price">2,000 naira each</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://images.pexels.com/photos/4099124/pexels-photo-4099124.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Cupcakes">
+                </div>
+                <div class="product-info">
+                    <h3>Cupcakes</h3>
+                    <p>Our Cupcakes are a sweet symphony of flavor and artistry! Each cupcake is handcrafted with love, featuring moist, fluffy cake topped with a swirl of creamy, decadent frosting. Perfect for celebrations, gifts, or simply treating yourself to a moment of indulgence. Available in a variety of flavors to suit every craving!</p>
+                    <p class="price">1,200 naira each, 9,000/pack of 8</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://images.pexels.com/photos/1233319/pexels-photo-1233319.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Fruit Juice">
+                </div>
+                <div class="product-info">
+                    <h3>Fruit Juice</h3>
+                    <p>Our Freshly Squeezed Fruit Juices are a burst of natural goodness! Made from the finest, handpicked fruits, each bottle is 
+                        packed with vitamins, antioxidants, and refreshing flavors. Perfect for a healthy start to your day or a revitalizing treat 
+                        anytime!</p>
+                    <p class="price">3,000 naira each</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🎂</div>
+                    <h3>Custom Cakes</h3>
+                    <p>We create beautiful custom cakes with mixed flavours or single flavour for all occasions - birthdays, 
+                        weddings, burial, church occasions, anniversaries, and more!</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🚚</div>
+                    <h3>Delivery</h3>
+                    <p>Fresh pastries delivered to your doorstep. Available for orders over 30,000 naira within a 10-mile radius.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">👩‍🍳</div>
+                    <h3>Baking Classes</h3>
+                    <p>Learn from our master bakers with our quarterly workshops and classes all-year round, for all skill levels, 
+                        from beginners to advanced bakers. Register with an open mind to learn and be your best!</p>
+                    </p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">☕</div>
+                    <h3>Catering</h3>
+                    <p>Perfect pastries and breads for your events, meetings, or special gatherings. Contact us to get started on your 
+                        next events, orders, or meetings. We are here to help you make it a success!</p>
+                    <p>We also offer catering services for events, parties, and corporate gatherings. Let us handle the sweet treats 
+                        while you enjoy the occasion!</p>
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🍰</div>
+                    <h3>Pastry Tasting Events</h3>
+                    <p>Join us for our monthly pastry tasting events where you can sample a variety of our delicious treats and 
+                        discover new favorites!</p>
+                    <p>Experience the joy of tasting our pastries before you buy! Join us for our monthly tasting events at the last 
+                        Saturdays of every month, where you can sample a variety of our delicious treats and discover new favorites!</p>
+            </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">☕</div>
+                    <h3>Cafe Shop</h3>
+                    <p>Step into our cozy cafe shop and experience the perfect blend of comfort and indulgence. Whether you're looking 
+                        for a quiet spot to enjoy your morning coffee, a sweet treat to a great and fulfiling day, or a place to catch 
+                        up with friends, our cafe has it all. Savor our freshly brewed beverages, paired with our signature pastries, 
+                        in a warm and inviting atmosphere. Your perfect escape awaits!</p>
+                </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="Index.html">Home</a></li>
+                        <li><a href="Products.html">Products</a></li>
+                        <li><a href="About.html">About Us</a></li>
+                        <li><a href="Contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Store Hours</h3>
+                    <ul>
+                        <li>Mondays - Fridays: 8:00AM - 8:00PM</li>
+                        <li>Saturdays: 9:00AM - 8:00PM</li>
+                        <li>Sundays: 12:00PM - 6:00PM</li>
+                        <li>Public Holidays: 10:00AM - 5:00PM</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>31, Sam Chuks Street, Bucknor Estate</li>
+                        <li>Isolo, Lagos State. 102214</li>
+                        <li>Phone: (+234) 811-430-4611</li>
+                        <li>Email: emmanuella.aimasdelight@gmail.com</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/emmanuellaileogben" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/b_aimalohi/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://tiktok.com/@b_aimalohi" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.linkedin.com/company/emmanuella-ileogben-13b024213" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Aima's Delight Pastries. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

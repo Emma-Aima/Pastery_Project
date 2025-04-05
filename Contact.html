@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Aima's Delight Pastries</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #053285;
+            --secondary-color: #501609;
+            --accent-color: #78a9f8;
+            --text-color: #4d0808;
+            --light-pink: #ffd2d2;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-pink);
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        .logo {
+            max-width: 200px;
+            height: auto;
+        }
+        
+        h1, h2, h3 {
+            color: #d35d6e;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin: 30px 0 20px;
+            text-align: center;
+        }
+        
+        .contact-info {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        #P {
+            color: blue;
+            text-align: center;
+            font-weight: 300;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .info-icon {
+            font-size: 24px;
+            color: #d35d6e;
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 40px 0;
+        }
+        
+        .social-links li {
+            margin: 0 15px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-5px);
+        }
+        
+        .social-links img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        #contact-form {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: #d35d6e;
+            outline: none;
+        }
+        
+        textarea.form-control {
+            min-height: 180px;
+            resize: vertical;
+        }
+        
+        button[type="submit"] {
+            background-color: #d35d6e;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #b84c5c;
+        }
+        
+        #sendmessage, #errormessage {
+            display: none;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        #sendmessage {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+        
+        #errormessage {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+        
+        .validation {
+            color: #2c0202;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+        
+        footer {
+            background-color: #726ffd;
+            color: rgb(49, 2, 2);
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+        
+        .business-hours {
+            background-color: rgb(161, 246, 252);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .hours-table tr:nth-child(even) {
+            background-color: #f8c8c8;
+        }
+        
+        .hours-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #7cbef5;
+        }
+        
+        .hours-table td:first-child {
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            #contact-form {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="aima's_delight.jpg" alt="Aima's Delight Pastries" class="logo">
+            <h1>Contact Us</h1>
+            <p>We'd love to hear from you!</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="contact-info">
+            <h2>Our Contact Information</h2>
+            <p>Have questions, special orders, or feedback? Reach out to us through any of these channels:</p>
+            
+            <div class="info-grid">
+                <div>
+                    <div class="info-item">
+                        <i class="fas fa-user info-icon"></i>
+                        <div>
+                            <h3>Owner</h3>
+                            <p>Emmanuella Aimalohi Ileogben</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt info-icon"></i>
+                        <div>
+                            <h3>Our Locations</h3>
+                            <p>20, Oyekan Street, Bode Thomas, Surulere, Lagos State, Nigeria</p>
+                            <p>31, Sam Chuks Street, Bucknor Estate, Isolo, Lagos State, Nigeria</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope info-icon"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p><a href="mailto:emmanuellaileogben@gmail.com">emmanuellaileogben@gmail.com</a></p>
+                            <p><a href="mailto:aidelokhaiileogben@gmail.com">aidelokhaiileogben@gmail.com</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-phone info-icon"></i>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>+234 908 197 6201</p>
+                            <p>+234 811 430 4611</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="business-hours">
+            <h2>Business Hours</h2>
+            <table class="hours-table">
+                <tr>
+                    <td>Monday - Friday</td>
+                    <td>8:00 AM - 8:00 PM</td>
+                </tr>
+                <tr>
+                    <td>Saturday</td>
+                    <td>9:00 AM - 8:00 PM</td>
+                </tr>
+                <tr>
+                    <td>Sunday</td>
+                    <td>12:00 PM - 6:00 PM</td>
+                </tr>
+                <tr>
+                    <td>Public Holidays</td>
+                    <td>10:00 AM - 5:00 PM</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="contact-form">
+            <h2>Send Us a Message</h2>
+            <p>Have a special request or inquiry? Fill out the form below and we'll get back to you as soon as possible.</p>
+            
+            <div class="form-box">
+                <div id="sendmessage">Your message has been sent. Thank you!</div>
+                <div id="errormessage"></div>
+                <form action="" method="post" role="form" class="contactForm">
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 characters" required>
+                        <div class="validation"></div>
+                    </div>
+    
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" required>
+                        <div class="validation"></div>
+                    </div>
+    
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 characters for the subject" required>
+                        <div class="validation"></div>
+                    </div>
+    
+                    <div class="form-group">
+                        <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write your message" placeholder="Your Message" required></textarea>
+                        <div class="validation"></div>
+                    </div>
+                    
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="social-section">
+            <h2>Connect With Us</h2>
+            <p>Follow us on social media for the latest updates, promotions, and delicious pastry photos!</p>
+            
+            <ul class="social-links">
+                <li><a href="https://www.instagram.com/b_aimalohi/" target="_blank" aria-label="Instagram"><img src="Instagram_logo.jpg" alt="Instagram"></a></li>
+                <li><a href="https://www.facebook.com/emmanuella-ileogben-13b024213/" target="_blank" aria-label="Facebook"><img src="Facebook_logo.jpg" alt="Facebook"></a></li>
+                <li><a href="https://www.tiktok.com/@b_aimalohi/" target="_blank" aria-label="TikTok"><img src="TikTok_logo.jpg" alt="TikTok"></a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Aima's Delight Pastries. All Rights Reserved.</p>
+            <p>Sweet treats made with love in Lagos</p>
+        </div>
+    </footer>
+</body>
+</html>
