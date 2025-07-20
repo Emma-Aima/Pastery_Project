@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Aima's Delight Pastries</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
             --primary-color: #053285;
@@ -12,12 +14,16 @@
             --accent-color: #78a9f8;
             --text-color: #4d0808;
             --light-pink: #ffd2d2;
+            --highlight-color: #8d0a82;
+            --contact-header-bg: #051558;
+            --form-bg: #53ddf0;
+            --hours-bg: #a1f6fc;
         }
         
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Georgia', 'Times New Roman', Times, serif;
             line-height: 1.6;
-            color: var(--text-color);
+            color: #333;
             background-color: var(--light-pink);
             margin: 0;
             padding: 0;
@@ -30,19 +36,84 @@
         }
         
         header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            padding: 20px 0;
-            text-align: center;
+            background-color: #f8f8f8;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #d364c4;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
         }
         
         .logo {
-            max-width: 200px;
-            height: auto;
+            height: 80px;
+            width: auto;
+        }
+        
+        #branding h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        
+        .highlight {
+            color: var(--highlight-color);
+        }
+        
+        nav ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin-left: 20px;
+        }
+        
+        nav a {
+            color: #333;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #491de8;
+        }
+        
+        .current a {
+            color: #e8491d;
+            border-bottom: 2px solid #e8491d;
+        }
+        
+        .contact-header {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: var(--contact-header-bg);
+            color: white;
+        }
+        
+        .contact-header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        
+        .contact-header p {
+            margin: 10px 0 0;
+            font-size: 1.2em;
         }
         
         h1, h2, h3 {
-            color: #d35d6e;
+            color: #f54ca9;
         }
         
         h1 {
@@ -56,6 +127,7 @@
             text-align: center;
         }
         
+        /* Contact Info Section */
         .contact-info {
             background-color: white;
             border-radius: 10px;
@@ -63,11 +135,11 @@
             margin: 30px 0;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
-
-        #P {
-            color: blue;
-            text-align: center;
-            font-weight: 300;
+        
+        .contact-info h2 {
+            color: #d35d6e;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
         }
         
         .info-grid {
@@ -88,6 +160,145 @@
             color: #d35d6e;
             margin-right: 15px;
             margin-top: 5px;
+            min-width: 24px;
+        }
+        
+        /* Business Hours Section */
+        .business-hours {
+            background-color: var(--hours-bg);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .business-hours h2 {
+            color: #d35d6e;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .hours-table tr:nth-child(even) {
+            background-color: #f8c8c8;
+        }
+        
+        .hours-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #7cbef5;
+        }
+        
+        .hours-table td:first-child {
+            font-weight: bold;
+        }
+        
+        /* Contact Form Section */
+        .contact-section {
+            background: var(--form-bg);
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin: 30px 0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .contact-section h2 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .contact-section h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #9b59b6);
+            border-radius: 2px;
+        }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .contact-form label {
+            font-weight: 600;
+            color: #5e1e53;
+            font-size: 1rem;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            padding: 14px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: #f9f9f9;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            outline: none;
+            background-color: #fff;
+        }
+        
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(52, 152, 219, 0.3);
+            background: linear-gradient(135deg, #2980b9, #8e44ad);
+        }
+        
+        /* Social Media Section */
+        .social-section {
+            text-align: center;
+            margin: 40px 0;
         }
         
         .social-links {
@@ -95,7 +306,8 @@
             justify-content: center;
             list-style: none;
             padding: 0;
-            margin: 40px 0;
+            margin: 20px 0;
+            flex-wrap: wrap;
         }
         
         .social-links li {
@@ -118,119 +330,150 @@
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         }
         
-        #contact-form {
-            background-color: white;
-            border-radius: 10px;
-            padding: 40px;
-            margin: 40px 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        
-        .form-group {
-            margin-bottom: 25px;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: border-color 0.3s;
-        }
-        
-        .form-control:focus {
-            border-color: #d35d6e;
-            outline: none;
-        }
-        
-        textarea.form-control {
-            min-height: 180px;
-            resize: vertical;
-        }
-        
-        button[type="submit"] {
-            background-color: #d35d6e;
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            display: block;
-            margin: 0 auto;
-        }
-        
-        button[type="submit"]:hover {
-            background-color: #b84c5c;
-        }
-        
-        #sendmessage, #errormessage {
-            display: none;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            text-align: center;
-        }
-        
-        #sendmessage {
-            background-color: #e8f5e9;
-            color: #2e7d32;
-        }
-        
-        #errormessage {
-            background-color: #ffebee;
-            color: #c62828;
-        }
-        
-        .validation {
-            color: #2c0202;
-            font-size: 13px;
-            margin-top: 5px;
-        }
-        
+        /* Footer */
         footer {
-            background-color: #726ffd;
-            color: rgb(49, 2, 2);
+            background-color: #4e2303;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #FFD1DC;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            background-color: #D23C77;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: #FFD1DC;
+        }
+        
+        .copyright {
             text-align: center;
-            padding: 20px 0;
-            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 3px solid rgba(129, 6, 6, 0.863);
         }
         
-        .business-hours {
-            background-color: rgb(161, 246, 252);
-            border-radius: 10px;
-            padding: 30px;
-            margin: 30px 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        
-        .hours-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        
-        .hours-table tr:nth-child(even) {
-            background-color: #f8c8c8;
-        }
-        
-        .hours-table td {
-            padding: 12px 15px;
-            border-bottom: 1px solid #7cbef5;
-        }
-        
-        .hours-table td:first-child {
-            font-weight: bold;
-        }
-        
+        /* Mobile  Navigation*/
         @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header-content .logo {
+                margin-bottom: 10px;
+            }
+
+            nav ul li a {
+                font-size: 18px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 0;
+                margin: 0;
+                list-style: none;
+            }
+            
+            nav ul li {
+                margin-left: 0;
+                margin-bottom: 10px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+        }
+        
+        /* Error Message */
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        /* Success Message */
+        .success-message {
+            color: #27ae60;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+            display: none;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+            }
+            
+            nav li {
+                margin: 0 10px;
+            }
+            
             .info-grid {
                 grid-template-columns: 1fr;
             }
             
-            #contact-form {
+            .contact-section {
                 padding: 20px;
             }
         }
@@ -238,13 +481,27 @@
 </head>
 <body>
     <header>
-        <div class="container">
+        <div class="header-container">
             <img src="aima's_delight.jpg" alt="Aima's Delight Pastries" class="logo">
+            <div id="branding">
+                <h1><span class="highlight">Aima's</span> Delight Pastries</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="contact-header">
             <h1>Contact Us</h1>
             <p>We'd love to hear from you!</p>
         </div>
     </header>
 
+    <!-- Main Content -->
     <main class="container">
         <section class="contact-info">
             <h2>Our Contact Information</h2>
@@ -284,16 +541,18 @@
                         <i class="fas fa-phone info-icon"></i>
                         <div>
                             <h3>Phone</h3>
-                            <p>+234 908 197 6201</p>
-                            <p>+234 811 430 4611</p>
+                            <p><a href="tel:+2349081976201">+234 908 197 6201</a></p>
+                            <p><a href="tel:+2348114304611">+234 811 430 4611</a></p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Business Hours Section -->
         <section class="business-hours">
             <h2>Business Hours</h2>
+            <p>We are here to serve you during the following hours:</p>
             <table class="hours-table">
                 <tr>
                     <td>Monday - Friday</td>
@@ -314,56 +573,90 @@
             </table>
         </section>
 
-        <section id="contact-form">
+        <!-- Contact Form Section -->
+        <section class="contact-section">
             <h2>Send Us a Message</h2>
             <p>Have a special request or inquiry? Fill out the form below and we'll get back to you as soon as possible.</p>
-            
-            <div class="form-box">
-                <div id="sendmessage">Your message has been sent. Thank you!</div>
-                <div id="errormessage"></div>
-                <form action="" method="post" role="form" class="contactForm">
-                    <div class="form-group">
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 characters" required>
-                        <div class="validation"></div>
-                    </div>
-    
-                    <div class="form-group">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" required>
-                        <div class="validation"></div>
-                    </div>
-    
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 characters for the subject" required>
-                        <div class="validation"></div>
-                    </div>
-    
-                    <div class="form-group">
-                        <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write your message" placeholder="Your Message" required></textarea>
-                        <div class="validation"></div>
-                    </div>
-                    
-                    <button type="submit">Send Message</button>
-                </form>
-            </div>
+            <form class="contact-form" id="messageForm">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                    <div class="error-message" id="nameError">Please enter your name</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                    <div class="error-message" id="emailError">Please enter a valid email address</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject:</label>
+                    <input type="text" id="subject" name="subject" placeholder="What's this about?" required>
+                    <div class="error-message" id="subjectError">Please enter a subject</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" placeholder="Type your message here..." required></textarea>
+                    <div class="error-message" id="messageError">Please enter your message</div>
+                </div>
+                
+                <button type="submit" class="submit-btn">Send Message</button>
+                <div class="success-message" id="successMessage">Thank you! Your message has been sent successfully.</div>
+            </form>
         </section>
+        </main>
 
-        <section class="social-section">
-            <h2>Connect With Us</h2>
-            <p>Follow us on social media for the latest updates, promotions, and delicious pastry photos!</p>
-            
-            <ul class="social-links">
-                <li><a href="https://www.instagram.com/b_aimalohi/" target="_blank" aria-label="Instagram"><img src="Instagram_logo.jpg" alt="Instagram"></a></li>
-                <li><a href="https://www.facebook.com/emmanuella-ileogben-13b024213/" target="_blank" aria-label="Facebook"><img src="Facebook_logo.jpg" alt="Facebook"></a></li>
-                <li><a href="https://www.tiktok.com/@b_aimalohi/" target="_blank" aria-label="TikTok"><img src="TikTok_logo.jpg" alt="TikTok"></a></li>
-            </ul>
-        </section>
-    </main>
-
-    <footer>
+        <!-- Footer Section -->
+         <footer>
         <div class="container">
-            <p>&copy; 2025 Aima's Delight Pastries. All Rights Reserved.</p>
-            <p>Sweet treats made with love in Lagos</p>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="Index.html">Home</a></li>
+                        <li><a href="Products.html">Products</a></li>
+                        <li><a href="About.html">About Us</a></li>
+                        <li><a href="Contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Store Hours</h3>
+                    <ul>
+                        <li>Mondays - Fridays: 8:00AM - 8:00PM</li>
+                        <li>Saturdays: 9:00AM - 8:00PM</li>
+                        <li>Sundays: 12:00PM - 6:00PM</li>
+                        <li>Public Holidays: 10:00AM - 5:00PM</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>31, Sam Chuks Street, Bucknor Estate</li>
+                        <li>Isolo, Lagos State. 102214</li>
+                        <li>Phone: (+234) 811-430-4611</li>
+                        <li>Email: emmanuella.aimasdelight@gmail.com</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/emmanuellaileogben" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/b_aimalohi/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://tiktok.com/@b_aimalohi" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.linkedin.com/company/emmanuella-ileogben-13b024213" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Aima's Delight Pastries. All Rights Reserved.</p>
+            </div>
         </div>
     </footer>
 </body>
+<script src="script.js"></script>
 </html>
